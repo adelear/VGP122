@@ -1,0 +1,14 @@
+﻿  Main.cpp
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(8,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(12,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(16,11): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(20,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(30,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(30,25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(31,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(31,33): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(32,42): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(32,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(33,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\Q3\Main.cpp(33,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Q3.vcxproj -> C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Lab 1\VGP122-PF1-LAB1-TEMPLATE\x64\Debug\Q3.exe

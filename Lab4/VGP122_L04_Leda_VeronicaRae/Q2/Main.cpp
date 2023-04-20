@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+//Same method as Lab 2 but with for loop 
+//As long as i doesnt equal the number, it will continue to multiply itself and add up by 1
 void factorial(int* x) {
 	int fact = 1;
 	for (int i = 1; i <= *x; i++) {

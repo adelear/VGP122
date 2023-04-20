@@ -72,30 +72,30 @@ void doubleDown();
 void passTurn();
 int cardCount(string cardArray[], int arraySize);
 int addCard(string hand[], int& cardCount, string card);
-string randomCard();
-void playerMenu(string playerChoice, string playerHand[], int& handSize); 
+string randomCard(bool player);
+void playerMenu(string playerChoice, string playerHand[], int& handSize, bool &done); 
 
 
 void hitTurn(string playerHand[], int& handSize) {
-	string newCard = randomCard();
+	string newCard = randomCard(true);
 	cout << "\nHit! New card: " << newCard << endl; 
 	addCard(playerHand, handSize, newCard); 
 	cout << "Card Count: " << cardCount(playerHand, handSize) << endl; 
 }
 
 void standTurn() { // Hold your total and end your turn 
-	cout << "\nStand" << endl;
+	cout << "\nStand!" << endl;
 }
 
-void splitTurn() {
+void splitTurn() { // (TODO) // Split cards if they are equal into two hands 
 	cout << "\nSplit" << endl;
 }
 
-void doubleDown() {
+void doubleDown() { // (TODO) // Can be played before 
 	cout << "\nDouble Down" << endl;
 }
 
-void passTurn() {
+void passTurn() { 
 	cout << "\nPassed Turn!" << endl;
 }
 
@@ -131,30 +131,40 @@ int addCard(string hand[], int& cardCount, string card) {
 	return cardCount;
 }
 
-// 
-string randomCard() {
+string randomCard(bool player) {
 	int card = rand() % 13 + 1;
 
 	if (card == 1) {
-		bool validInput = false;
-		cout << "\nCard: Ace 1 OR 11: " << endl;
+		if (player == true) {
+			bool validInput = false;
+			cout << "\nCard: Ace 1 OR 11: ";
 
-		while (!validInput) {
-			int userInput;
-			cin >> userInput;
+			while (!validInput) {
+				int userInput;
+				cin >> userInput;
 
-			if (userInput == 1) { // ACE
-				validInput = true;
-				return "ACE 1";
+				if (userInput == 1) { // ACE
+					validInput = true;
+					return "ACE 1";
 
+				}
+				else if (userInput == 11) {
+					validInput = true;
+					return "ACE 11";
+
+				}
+				else {
+					cout << "\nEnter 1 or 11" << endl;
+				}
 			}
-			else if (userInput == 11) {
-				validInput = true;
-				return "ACE 11";
-
+		}
+		else if (player == false) {
+			int randomNum = rand() % 2 + 1; 
+			if (randomNum == 1) { 
+				return "ACE 1"; 
 			}
 			else {
-				cout << "\nEnter 1 or 11" << endl;
+				return "ACE 11";  // FIX DEALER AI SO THAT IT DECIDES IF IT NEEDS TO HIT, IF IT NEEDS TO MAKE ACE 1 OR 11 (done)
 			}
 		}
 	}
@@ -162,7 +172,6 @@ string randomCard() {
 	else if (card > 1 && card < 11) { // CARDS 2 TO 10
 		return to_string(card);
 	}
-
 	else if (card == 11) { // JACK
 		return "Jack";
 	}
@@ -172,20 +181,18 @@ string randomCard() {
 	else if (card == 13) { // KING
 		return "King";
 	}
-
 	// Default return statement
 	return "";
 }
 
-void playerMenu(string playerChoice, string playerHand[], int& handSize) {
+void playerMenu(string playerChoice, string playerHand[], int& handSize, bool& done) { 
 	if (playerChoice == "H") {
 		hitTurn(playerHand, handSize); 
 	}
-
 	if (playerChoice == "S") {
 		standTurn();
+		done = true; 
 	}
-
 	if (playerChoice == "SP") {
 		splitTurn();
 	}
@@ -194,6 +201,7 @@ void playerMenu(string playerChoice, string playerHand[], int& handSize) {
 	}
 	if (playerChoice == "X") {
 		passTurn();
+		done = true; 
 	}
 }
 
@@ -202,67 +210,105 @@ int main() {
 
 	int totalBet = 1000;
 	bool gameRunning = true; 
-	int cardNum = 0; 
-	int handSize = 2;
 	string dealerHand[10] = { "" };
 	string playerHand[10] = { ""};
 
-	while (gameRunning) {
-		int bet;
+	// Main Game loop
+	while (gameRunning) { 
+		int betPlaced; 
 		string playerChoice;
+		int cardNum = 0;
+		int handSize = 2;
 
 		cout << "---------------------------------------------------------------" << endl;
 		cout << "Dealing Cards" << endl;
+
 		//PLAYER'S HAND
-		
-		
 		cout << "----------------------------" << endl;
 		cout << "YOUR HAND" << endl;
-		playerHand[0] = randomCard();
+		playerHand[0] = randomCard(true);
 		cout << "\nFirst card: " << playerHand[0] << endl;
-		playerHand[1] = randomCard();
+		playerHand[1] = randomCard(true);
 		cout << "Second card: " << playerHand[1] << endl;
-		cout << "\nCard Count: " << cardCount(playerHand, handSize) << endl;
+		cout << "Card Count: " << cardCount(playerHand, handSize) << endl;
 		cout << "----------------------------" << endl;
 	
 		//DEALER'S HAND 
 		cout << "DEALER'S HAND" << endl;
-		
-		dealerHand[0] = randomCard();  
+		dealerHand[0] = randomCard(false);  
 		cout << "\nFirst card: " << dealerHand[0] << endl;  
-		dealerHand[1] = randomCard();
+		dealerHand[1] = randomCard(false); 
 		cout << "Second card: UNFLIPPED " << endl;
 		cout << "----------------------------" << endl;
 
-
-		
-
-		//MAKE IF STATEMENT THAT CHECKS WHAT VALUE CARD IS SO THAT IT OUTPUTS KING, QUEEN, JACK, ACE, ETC
-
-
-		cout << "Balance is " << totalBet << ". Place your bet : ";
-		cin >> bet;
-		totalBet = totalBet - bet;
-		cout << "New Balance: " << totalBet << endl;
-
+		//Printing out Balance
+		cout << "Balance is " << totalBet << ". Place your bet: ";
+		cin >> betPlaced; 
 
 		//MENU FOR PLAYER OPTIONS
-
-		while (handSize<22 && cardCount(playerHand, handSize)<22){
-			cout << "\nHit(H) | Stand(S) | Split(SP) | Double Down(D) |  Pass(X) " << endl;
+		bool playerDone = false;
+		while (handSize<22 && cardCount(playerHand, handSize)<22 && !playerDone){   
+			cout << "\nHit(H) | Stand(S) | Split(SP) | Double Down(D) |  Pass(X): ";
 			cin >> (playerChoice);
-			playerMenu(playerChoice, playerHand, handSize); 
+			playerMenu(playerChoice, playerHand, handSize, playerDone);  
+			cout << "Cards: "; 
+
+			//Printing our playerHand 
+			for (int i = 0; i < handSize + 1; i++) {
+				cout << " | " << playerHand[i];
+			} 
+			cout << "\nCard Count: " << cardCount(playerHand, handSize) << endl;
 		}
-		
+		//reveal dealear Cards 
+		cout << "\nRevealing Dealer's Hand: " << dealerHand[0] << ", " << dealerHand[1] << endl;
+
+		// WIN CONDITIONS: IF PLAYER HAS MORE CARD COUNT THAN DEALER BUT LESS THAN 22
+		if (cardCount(playerHand, handSize) > cardCount(dealerHand, 2) && cardCount(playerHand,handSize) < 22) {
+			cout << "\nYou win!" << endl;
+			totalBet += betPlaced;  
+			cout << "\nBalance: " << totalBet << endl;
+		}
+
+
+		//LOSE CONDITIONS -> if card count is over 21 
+		if (cardCount(playerHand, handSize) > 21) {
+			cout << "\nCard Count over 21. YOU LOSE" << endl;
+			totalBet-= betPlaced;  
+			cout << "\nBalance: " << totalBet << endl; 
+		}
+		if (cardCount(playerHand, handSize) < cardCount(dealerHand, 2) && cardCount(playerHand, handSize)) {
+			cout << "\nDealer closer to 21. YOU LOSE" << endl;
+			totalBet -= betPlaced; 
+			cout << "\nBalance: " << totalBet << endl; 
+		}
+
+		//LOSE CONDITIONS -> lost all bet money 
+		if (totalBet <=	 0) {
+			cout << "\nYou lost all your money!" << endl;
+			gameRunning = false;
+
+		}
+
+		//DRAW CONDITIONS 
+		if (cardCount(playerHand, handSize) == cardCount(dealerHand, 2)) {
+			cout << "\nDraw!" << endl;
+			cout << "Balance: " << totalBet; 
+		}
+
+		//Playing again? 
+		if (totalBet > 0) {
+			cout << "\nPlay again? Y/N: ";
+			string choice;
+			cin >> choice;
+
+			if (choice == "Y") {
+				gameRunning = true;
+			}
+			else if (choice == "N") {
+				gameRunning = false;
+			}
+		}
 	}
-
-		
-	if (totalBet == 0) {
-		cout << "You lost all your money!" << endl;
-
-	}
-
-
 	return 0;
 
 }

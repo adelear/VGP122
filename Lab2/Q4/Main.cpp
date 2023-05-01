@@ -1,5 +1,5 @@
 /* Factorials are used frequently in probability problems. The factorial of a
-positive integer n (written n! and pronounced ìn factorialî) is equal to the product
+positive integer n (written n! and pronounced ‚Äún factorial‚Äù) is equal to the product
 of the positive integers from 1 to n. Write an application that calculates the
 factorials of 1 through 20. Use type long. Display the results in tabular format. */
 
@@ -7,7 +7,7 @@ factorials of 1 through 20. Use type long. Display the results in tabular format
 using namespace std;
 
 int main() {
-	int totalNum, factorial=1,counter=1;
+	long long totalNum, factorial=1,counter=1; 
 
 	cout << "Enter a number: "; 
 	cin >> totalNum;

@@ -1,1 +1,8 @@
-﻿  Assignment1.vcxproj -> C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\Assignment1\x64\Debug\Assignment1.exe
+﻿  gameplay.cpp
+  Main.cpp
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Assignment1\Assignment1\Main.cpp(11,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+gameplay.obj : error LNK2019: unresolved external symbol "void __cdecl doubleDown(int &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,int &,bool &)" (?doubleDown@@YAXAEAHPEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@10AEA_N@Z) referenced in function "void __cdecl playerMenu(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,int &,bool &,bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,bool &,int &,int &,int &,bool &)" (?playerMenu@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEAV12@1AEAHAEA_N_N1132223@Z)
+    Hint on symbols that are defined and could potentially match:
+      "void __cdecl doubleDown(int &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,int &,int &)" (?doubleDown@@YAXAEAHPEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@100@Z)
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Assignment1\x64\Debug\Assignment1.exe : fatal error LNK1120: 1 unresolved externals

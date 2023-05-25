@@ -4,8 +4,8 @@ using namespace std;
 
 //Same method as Lab 2 but with for loop 
 //As long as i doesnt equal the number, it will continue to multiply itself and add up by 1
-void factorial(int* x) {
-	int fact = 1;
+void factorial(long long* x) {
+	long long fact = 1;
 	for (int i = 1; i <= *x; i++) {
 		fact *= i; 
 	}
@@ -14,7 +14,7 @@ void factorial(int* x) {
 }
 
 int main() {
-	int num; 
+	long long num; 
 	cout << "Enter a number to calculate its factorial:"; 
 	cin >> num; 
 	factorial(&num);

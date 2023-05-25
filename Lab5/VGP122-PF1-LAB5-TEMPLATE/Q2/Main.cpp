@@ -16,14 +16,52 @@ a is the numerator and b is the denominator.
 f. toDouble—Returns the Rational number as a double. */
 
 #include <iostream> 
-using namespace std; 
 
 class Rational {
 	private:
 		int numerator; 
 		int denominator;  
 	public:	
+		Rational() {
+			int num, denom; 
+			std::cout << "Enter value for denominator: "; 
+			std::cin >> denom; 
+			std::cout << "Enter value for numerator: ";
+			std::cin >> num; 
 
-
-	
+			setValues()
+			
+			
+		}
+		void setValues(int num, int denom);
+		void reduceFraction();
+		int Add();
+		int Subtract();
+		int Multiply();
+		int Divide();
+		std::string toRationalString();    
+		double toDouble(); 
+		
 };
+
+void Rational::setValues(int num, int denom) {
+	numerator = num; 
+	denominator = denom; 
+}
+
+void Rational::reduceFraction() {
+	// If numerator % denominator == 0 and other way around 
+	if (numerator % denominator == 0) {
+		// 3/6 = 1/2 //Find greatest common denominator
+		//3/9 = 1/3 
+		//20/100 = 1/5 
+		//1. Find The Greatest Common Denominator 
+		int gcd = denominator;
+		(while denom != 0) {
+		}
+
+	}
+
+
+	}
+}

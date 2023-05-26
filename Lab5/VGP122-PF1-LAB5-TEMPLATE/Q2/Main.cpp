@@ -23,45 +23,83 @@ class Rational {
 		int denominator;  
 	public:	
 		Rational() {
-			int num, denom; 
-			std::cout << "Enter value for denominator: "; 
-			std::cin >> denom; 
-			std::cout << "Enter value for numerator: ";
-			std::cin >> num; 
-
-			setValues()
-			
-			
+			int numerator = 0; 
+			int denom = 1; 
 		}
+
+		Rational(int num, int denom) {
+			numerator = num;
+			denominator = denom;  
+		} 
+
 		void setValues(int num, int denom);
 		void reduceFraction();
-		int Add();
+		void printFraction();  
+		Rational Add(const Rational& secondFraction) const; 
 		int Subtract();
 		int Multiply();
 		int Divide();
 		std::string toRationalString();    
 		double toDouble(); 
 		
+		
 };
-
-void Rational::setValues(int num, int denom) {
-	numerator = num; 
-	denominator = denom; 
-}
-
 void Rational::reduceFraction() {
 	// If numerator % denominator == 0 and other way around 
 	if (numerator % denominator == 0) {
-		// 3/6 = 1/2 //Find greatest common denominator
-		//3/9 = 1/3 
-		//20/100 = 1/5 
-		//1. Find The Greatest Common Denominator 
-		int gcd = denominator;
-		(while denom != 0) {
+		//Find The Greatest Common Denominator to divide both numerator and denom by
+		int a = numerator;
+		int b = denominator;
+		int gcd; 
+		while (b != 0) {
+			int temp = b; 
+			b = a % b; 
+			a = temp; 
 		}
+		gcd = a; 
 
+		numerator /= gcd; 
+		denominator /= gcd;  
 	}
+}
+
+void Rational::printFraction() {
+	std::cout << numerator << "\\" << denominator << std::endl; 
+}
+
+Rational Rational::Add(const Rational& secondFraction) const {
+	//Create a second rational number to add onto your original fraction 
+	Rational newRationalNum; 
+	
+	//1/2 + 3/4 
+	//Cross multiply the fractions 
+	//numerator of first fraction * denominator of the second fraction 
+	//denominator of first fracton * numerator of the second fraction  
+
+	newRationalNum.numerator = (numerator * secondFraction.denominator) + (secondFraction.numerator * denominator); 
+	newRationalNum.denominator = (denominator * secondFraction.denominator); 
+	newRationalNum.reduceFraction(); 
 
 
-	}
+	return newRationalNum; 
+}
+
+
+int main() {
+	int num[2];
+	int denom[2]; 
+
+	for (int i = 0; i < 2; i++) { 
+		std::cout << "Enter numerator:";
+		std::cin >> num[i]; 
+		std::cout << "Enter denominator:";
+		std::cin >> denom[i];
+	} 
+
+	Rational fraction1(num[0], denom[0]); 
+	Rational fraction2(num[1], denom[1]); 
+
+	Rational sum = fraction1.Add(fraction2); 
+	
+	return 0;
 }

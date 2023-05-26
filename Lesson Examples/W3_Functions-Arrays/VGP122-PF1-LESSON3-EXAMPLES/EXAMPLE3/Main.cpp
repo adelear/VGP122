@@ -1,0 +1,26 @@
+#include <iostream>
+
+int minNumber(int, int);
+
+int main()
+{
+	int a, b;
+
+	std::cout << "Enter a number: ";
+	std::cin >> a;
+
+	std::cout << "Enter another number: ";
+	std::cin >> b;
+
+	std::cout << "The lowest number between " << a << " and " << b << " is " << minNumber(a, b) << std::endl;
+
+	return 0;
+}
+
+int minNumber(int number1, int number2)
+{
+	if (number1 < number2)
+		return number1;
+
+	return number2;
+}

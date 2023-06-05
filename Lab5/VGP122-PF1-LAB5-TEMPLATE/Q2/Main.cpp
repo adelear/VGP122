@@ -14,92 +14,130 @@ d. divide—Divides two Rational numbers. The result should be stored in reduced f
 e. toRationalString—Returns a string representation of a Rational number in the form a/b, where
 a is the numerator and b is the denominator.
 f. toDouble—Returns the Rational number as a double. */
-
 #include <iostream> 
-
+#include <string>
+ 
 class Rational {
-	private:
-		int numerator; 
-		int denominator;  
-	public:	
-		Rational() {
-			int numerator = 0; 
-			int denom = 1; 
-		}
+private:
+    int numerator;
+    int denominator;
+public:
+    Rational() {
+        numerator = 0;
+        denominator = 1;
+    }
 
-		Rational(int num, int denom) {
-			numerator = num;
-			denominator = denom;  
-		} 
+    Rational(int num, int denom) {
+        numerator = num;
+        denominator = denom;
+    }
 
-		void setValues(int num, int denom);
-		void reduceFraction();
-		void printFraction();  
-		Rational Add(const Rational& secondFraction) const; 
-		int Subtract();
-		int Multiply();
-		int Divide();
-		std::string toRationalString();    
-		double toDouble(); 
-		
-		
+    void reduceFraction();
+    Rational Add(const Rational& secondFraction) const;
+    Rational Subtract(const Rational& secondFraction) const;
+    Rational Multiply(const Rational& secondFraction) const;
+    Rational Divide(const Rational& secondFraction) const;
+    std::string toRationalString();
+    double toDouble();
 };
+
 void Rational::reduceFraction() {
-	// If numerator % denominator == 0 and other way around 
-	if (numerator % denominator == 0) {
-		//Find The Greatest Common Denominator to divide both numerator and denom by
-		int a = numerator;
-		int b = denominator;
-		int gcd; 
-		while (b != 0) {
-			int temp = b; 
-			b = a % b; 
-			a = temp; 
-		}
-		gcd = a; 
+    // If numerator % denominator == 0 and other way around 
+    int a = numerator;
+    int b = denominator;
+    int gcd = 1;
 
-		numerator /= gcd; 
-		denominator /= gcd;  
-	}
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+
+    gcd = a; 
+
+    numerator /= gcd;
+    denominator /= gcd; 
+
+    std::cout << numerator << "/" << denominator << std::endl;  
+   
+} 
+
+
+Rational Rational::Add(const Rational& secondFraction) const {  
+    //Create a second rational number to add onto your original fraction  
+    //1/2 + 3/4 
+    //Cross multiply the fractions 
+    //numerator of first fraction * denominator of the second fraction 
+    //denominator of first fracton * numerator of the second fraction   
+    Rational newRationalNum;
+    newRationalNum.numerator = (numerator * secondFraction.denominator) + (secondFraction.numerator * denominator);
+    newRationalNum.denominator = (denominator * secondFraction.denominator);
+    newRationalNum.reduceFraction();
+    return newRationalNum;
 }
 
-void Rational::printFraction() {
-	std::cout << numerator << "\\" << denominator << std::endl; 
+Rational Rational::Subtract(const Rational& secondFraction) const {
+    //Same method as add except you subtract 
+    Rational newRationalNum;
+    newRationalNum.numerator = (numerator * secondFraction.denominator) - (secondFraction.numerator * denominator);
+    newRationalNum.denominator = (denominator * secondFraction.denominator);
+    newRationalNum.reduceFraction();
+    return newRationalNum;
 }
 
-Rational Rational::Add(const Rational& secondFraction) const {
-	//Create a second rational number to add onto your original fraction 
-	Rational newRationalNum; 
-	
-	//1/2 + 3/4 
-	//Cross multiply the fractions 
-	//numerator of first fraction * denominator of the second fraction 
-	//denominator of first fracton * numerator of the second fraction  
-
-	newRationalNum.numerator = (numerator * secondFraction.denominator) + (secondFraction.numerator * denominator); 
-	newRationalNum.denominator = (denominator * secondFraction.denominator); 
-	newRationalNum.reduceFraction(); 
-
-
-	return newRationalNum; 
+Rational Rational::Multiply(const Rational& secondFraction) const {
+    //numator is multipled by the other fraction's numerator, and same with denom
+    Rational newRationalNum;
+    newRationalNum.numerator = numerator * secondFraction.numerator;
+    newRationalNum.denominator = denominator * secondFraction.denominator;
+    newRationalNum.reduceFraction();
+    return newRationalNum;
 }
 
+Rational Rational::Divide(const Rational& secondFraction) const {
+    //take second fraction, flip denom and numerator, then same method as multiply 
+    Rational newRationalNum;
+    newRationalNum.numerator = numerator * secondFraction.denominator;
+    newRationalNum.denominator = denominator * secondFraction.numerator;
+    newRationalNum.reduceFraction();
+    return newRationalNum;
+}
+
+std::string Rational::toRationalString() {
+    return std::to_string(numerator) + "/" + std::to_string(denominator);
+}
+
+double Rational::toDouble() {
+    return static_cast<double>(numerator) / denominator;
+}
 
 int main() {
-	int num[2];
-	int denom[2]; 
+    int num[2];
+    int denom[2];
 
-	for (int i = 0; i < 2; i++) { 
-		std::cout << "Enter numerator:";
-		std::cin >> num[i]; 
-		std::cout << "Enter denominator:";
-		std::cin >> denom[i];
-	} 
+    for (int i = 0; i < 2; i++) {
+        std::cout << "Enter numerator: ";
+        std::cin >> num[i];
+        std::cout << "Enter denominator: ";
+        std::cin >> denom[i];
+    }
 
-	Rational fraction1(num[0], denom[0]); 
-	Rational fraction2(num[1], denom[1]); 
+    Rational fraction1(num[0], denom[0]);
+    fraction1.reduceFraction();  
+    Rational fraction2(num[1], denom[1]);
+    fraction2.reduceFraction();   
 
-	Rational sum = fraction1.Add(fraction2); 
-	
-	return 0;
+    Rational sum = fraction1.Add(fraction2);
+    Rational difference = fraction1.Subtract(fraction2);
+    Rational product = fraction1.Multiply(fraction2);
+    Rational quotient = fraction1.Divide(fraction2);
+
+    std::cout << "Sum: " << sum.toRationalString() << std::endl;
+    std::cout << "Difference: " << difference.toRationalString() << std::endl;
+    std::cout << "Product: " << product.toRationalString() << std::endl;
+    std::cout << "Quotient: " << quotient.toRationalString() << std::endl;
+    std::cout << "As a double: " << fraction1.toDouble() << std::endl;
+
+    return 0; 
 }
+

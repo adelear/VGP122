@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <cmath> 
 
 #include "SDL.h"
 #include "SDL_image.h"
@@ -9,13 +10,12 @@
 
 #include "Global.h"
 
-
 #include "GameObject.h"
 #include "Vector2D.h"
 #include "ResourceManager.h"
 
 
-/*
+
 class Text : public GameObject
 {
 public:
@@ -57,4 +57,3 @@ private:
     SDL_Texture* texture;
 };
 
-*/

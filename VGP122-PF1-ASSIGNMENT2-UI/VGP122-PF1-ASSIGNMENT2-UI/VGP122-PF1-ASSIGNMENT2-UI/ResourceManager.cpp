@@ -2,7 +2,8 @@
 
 ResourceManager::ResourceManager()
 {
-	renderer = nullptr;
+	renderer = Game::getInstance()->getRenderer(); 
+	TTF_Init(); 
 }
 
 ResourceManager::~ResourceManager()
@@ -28,7 +29,7 @@ SDL_Texture* ResourceManager::load(SDL_Renderer* renderer, std::string filename)
 
 	if (it != resources.end())
 	{
-		std::cout << "Sprite " << filename << " already loaded..." << std::endl;
+		//std::cout << "Sprite " << filename << " already loaded..." << std::endl;
 		return (*it).second;
 	}
 
@@ -65,6 +66,55 @@ void ResourceManager::addGameObject(int depth, GameObject* o)
 	gameObjects[depth] = o;
 }
 
+TTF_Font* ResourceManager::loadFont(std::string filename, int ptsize)
+{
+	TTF_Font* font = TTF_OpenFont(filename.c_str(), ptsize);
+
+	if (!font)
+	{
+		std::cout << "Error: Unable to open font - " << TTF_GetError() << std::endl;  
+		return nullptr; 
+	}
+
+	std::unordered_map<std::string, TTF_Font*>::iterator it = fonts.find(filename);
+
+	if (it != fonts.end())
+	{
+		std::cout << "Font " << filename << " already loaded..." << std::endl;
+		return (*it).second;
+	}
+	else
+	{
+		std::cout << "Loading font " << filename << "..." << std::endl;
+		fonts[filename] = font;
+	}
+
+	return font; 
+} 
+
+TTF_Font* ResourceManager::findFont(std::string filename)
+{
+	TTF_Font* font = fonts[filename];
+
+	if (font == nullptr)
+	{
+		std::cout << "Error: Unable to find font " << filename << std::endl;
+		return nullptr;
+	}
+
+	return font;
+} 
+
+void ResourceManager::removeFont(std::string filename)
+{
+	TTF_Font* f = ResourceManager::getInstance()->findFont(filename);
+
+	if (!f) TTF_CloseFont(f);
+}
+
+
+
 std::unordered_map<std::string, SDL_Texture*> ResourceManager::resources;
+std::unordered_map<std::string, TTF_Font*>ResourceManager::fonts;  
 std::map<int, GameObject*> ResourceManager::gameObjects;
 ResourceManager* ResourceManager::instance = nullptr;

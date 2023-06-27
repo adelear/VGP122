@@ -1,15 +1,14 @@
 #include "Text.h"
-/* 
 
 Text::Text(SDL_Renderer* r, std::string f, int x, int y, int size, double a, SDL_RendererFlip flip) : renderer(r), filename(f), position(x, y), fontSize(size), angle(a), flip(flip)
-{
+{ 
     visible = true;
     w = 0;
     h = 0;
     surface = nullptr;
     texture = nullptr;
     color = { 255, 255, 255, 200 };
-}
+}  
 
 Text::~Text()
 {
@@ -53,12 +52,23 @@ void Text::setVisible(bool v)
 void Text::load()
 {
     TTF_Font* font = ResourceManager::getInstance()->loadFont(filename, fontSize);
-    surface = TTF_RenderText_Blended(font, output.c_str(), color);
+    if (!font) {
+        std::cout << "Font not loaded" << std::endl;
+        return;
+    }
+
+    surface = TTF_RenderText_Solid(font, output.c_str(), color);
+    if (surface == nullptr) {
+        std::cout << "Error rendering text surface: " << TTF_GetError() << std::endl;
+        return;
+    }
+
     texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     w = surface->w;
-    h = surface->h;
-}
+    h = surface->h; 
+} 
+
 
 
 void Text::setText(std::string t)
@@ -93,4 +103,4 @@ void Text::setColor(SDL_Color c)
     load();
 }
 
- */
+ 

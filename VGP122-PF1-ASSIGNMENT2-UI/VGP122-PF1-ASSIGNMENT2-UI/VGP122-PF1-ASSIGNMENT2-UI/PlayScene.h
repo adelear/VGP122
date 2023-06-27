@@ -62,6 +62,10 @@ private:
 	Hand* dealer;  
 	Hand* splitHand;  
 
+	Text* playerScoreText; 
+
+	std::string playerScore; 
+
 	bool canHit;
 	bool canSplit; 
 	bool hasSplit; 

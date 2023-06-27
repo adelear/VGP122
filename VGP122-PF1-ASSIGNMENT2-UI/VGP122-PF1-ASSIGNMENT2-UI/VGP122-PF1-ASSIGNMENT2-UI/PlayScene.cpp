@@ -23,9 +23,14 @@ restartPressed(false)
 	player = new Hand();
 	player->setPos(5, 5, 250, 250);
 	splitHand = new Hand();
-	splitHand->setPos(5, 250, 250, 250); 
-	//playerScoreText = Text(renderer,"open-sans/OpenSans-Bold.tff", x_position, y_position, font_size, angle, flip);   
+	splitHand->setPos(5, 250, 250, 250);   
 
+	//Text Initialization 
+	playerScoreText = new Text(Game::getRenderer(), "open-sans/OpenSans-Bold.ttf", 300, 400, 40);    
+	playerScore = "Player Score: " + std::to_string(player->getTotalValue()); 
+	playerScoreText->setText(playerScore);   
+	
+	 
 	splitCount = 0;
 
 	table->position.x = (SCREEN_WIDTH / 2) - (table->w / 2);
@@ -49,10 +54,13 @@ restartPressed(false)
 	restart->position = { 450, 300 };
 	restart->setCurrentFrame(1); 
 }
-
+ 
 void PlayScene::update()
 {
 	Scene::update();
+
+	//playerScore = "Player Score: " + std::to_string(player->getTotalValue());   
+	//playerScoreText->setText(playerScore);    
 
 	//std::cout << "Player Score: " << player->getTotalValue() << std::endl; 
 	if (splitCount >= 1) {
@@ -140,6 +148,8 @@ void PlayScene::update()
 		hit->onRelease();
 		std::cout << "HIT" << std::endl;
 		Hit();
+		playerScore = "Player Score: " + std::to_string(player->getTotalValue());
+		playerScoreText->setText(playerScore); 
 	}
 
 	if (stand->isPressed())
@@ -173,12 +183,13 @@ void PlayScene::update()
 
 void PlayScene::render()  // Render the game objects, such as player's hand, dealer's hand, etc. 
 {
-	Scene::render();
+	Scene::render(); 
+	//playerScoreText->render();  
 }
 
 bool PlayScene::onEnter() // Set up the initial state of the game, initialize game objects, start the game, etc.
 {
-	gameEnded = false; 
+	gameEnded = false;  
 	addGameObject(0, bg);
 	addGameObject(1, table);
 	addGameObject(2, hit);
@@ -194,6 +205,7 @@ bool PlayScene::onEnter() // Set up the initial state of the game, initialize ga
 	Deal(); 
 
 	addGameObject(8, restart); //Adding Restart Button   
+	addGameObject(9, playerScoreText); 
 	restart->setVisible(false); 
 	restart->setActive(false); 
 	dubble->setVisible(false); 

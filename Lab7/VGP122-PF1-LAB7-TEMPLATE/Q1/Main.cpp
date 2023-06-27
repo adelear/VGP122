@@ -1,22 +1,137 @@
 #include <iostream>
-#include <cstdlib>
+#include <vector>
+#include <string>
 
 #include "SDL.h"
+#include "SDL_image.h"
+#include "SDL_mixer.h"
+#include "SDL_ttf.h"
 
-using namespace std;
+#include "Game.h"
+#include "Window.h"
+#include "Input.h"
+#include "Image.h"
+
+// **********************************************
+// Global Screen Resolution - change these values
+// **********************************************
+const int SCREEN_WIDTH = 1024;
+const int SCREEN_HEIGHT = 768;
+
+// *************************************
+// Global Game Title - change this value
+// *************************************
+const std::string GAME_TITLE = "EXAMPLE";
+
+// ****************************************************
+// Global Initial Window Position - change these values
+// ****************************************************
+const int XPOS = SDL_WINDOWPOS_CENTERED;
+const int YPOS = SDL_WINDOWPOS_CENTERED;
+
+// Global game
+Game* game;
+int pause;
+
+// ***************************************************
+// Game Object Declaration - declare your objects here
+// ***************************************************
+Image* bg;
+Image* logo;
+Image* play; 
+
+// *************************
+// Global Functions for Game
+// *************************
+void handleEvents();
+void update();
+void render();
 
 int main(int argv, char** argc)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-	{
-		cerr << "Unable to initialize SDL" << SDL_GetError() << endl;
+    game = new Game(GAME_TITLE, XPOS, YPOS, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-		return -1;
-	}
+    pause = false;
 
-	atexit(SDL_Quit);
+    // ****************************************************
+    // Game Object Instantiation - create your objects here
+    // ****************************************************
+    bg = new Image(game->getRenderer(), "images/bg.png", 0, 0); 
+    logo = new Image(game->getRenderer(), "images/logo.png", 50, 100);  
+    play = new Image(game->getRenderer(), "images/play.png", 360, 500);  
 
-	cout << "SDL initialized" << endl;
+    logo->resize(922, 358);
+    play->resize(259, 86); 
+    
 
-	return 0;
+    // Register game loop functions
+    game->acceptInput(handleEvents);
+    game->acceptUpdate(update);
+    game->acceptRender(render);
+
+    // Start game if not paused
+    if (!game->isPaused())
+        game->start();
+
+    // Quit game if not running and not paused
+    if (!game->isRunning() && !game->isPaused())
+    {
+        delete play;
+        delete logo;
+        delete bg;
+        delete game;
+    }
+
+    return 0;
 }
+
+// ***************************************
+// Game Update Function - add updates here
+// ***************************************
+void update()
+{
+    bg->update();
+    logo->update();
+    play->update();
+}
+
+// **********************************************
+// Game Render Function - add render updates here
+// **********************************************
+void render()
+{
+    bg->render();
+    logo->render();
+    play->render();
+}
+
+// ***************************************************
+// Game Event Handler Function - add input events here
+// ***************************************************
+void handleEvents()
+{
+    SDL_Event event = game->getInput();
+
+    switch (event.type)
+    {
+    case SDL_QUIT:
+        game->stop();
+
+        break;
+    case SDL_KEYDOWN:
+        if (event.key.keysym.sym == SDLK_q || event.key.keysym.sym == SDLK_ESCAPE)
+            game->stop();
+        else if (event.key.keysym.sym == SDLK_p)
+        {
+            pause = !pause;
+
+            if (pause)
+                game->pause();
+            else
+                game->resume();
+        }
+
+        break;
+    }
+}
+

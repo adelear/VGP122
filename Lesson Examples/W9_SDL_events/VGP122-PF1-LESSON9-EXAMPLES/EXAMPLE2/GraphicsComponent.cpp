@@ -1,0 +1,20 @@
+#include "GraphicsComponent.h"
+#include "ResourceManager.h"
+
+GraphicsComponent::GraphicsComponent() 
+	: position(0.0f, 0.0f), angle(0.0), w(0), h(0), rows(1), cols(1), offsetX(0), offsetY(0), flipFlag(SDL_FLIP_NONE), visible(true), filename(""), texture(nullptr)
+{
+
+}
+
+void GraphicsComponent::loadAsset(std::string gameObjectID)
+{
+	texture = ResourceManager::getInstance()->load(gameObjectID, filename, rows, cols, offsetX, offsetY);
+
+	SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
+}
+
+GraphicsComponent::~GraphicsComponent()
+{
+	SDL_DestroyTexture(texture);
+}

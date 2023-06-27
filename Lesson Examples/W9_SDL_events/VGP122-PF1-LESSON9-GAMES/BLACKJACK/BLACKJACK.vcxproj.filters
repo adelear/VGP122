@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="GAMEENGINE">
+      <UniqueIdentifier>{b696b555-9eaa-4a9a-be97-c84cf7650e9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GAMEOBJECTS">
+      <UniqueIdentifier>{34ef6c5e-b1d0-47c8-8c28-3893a037b148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GAMESCENES">
+      <UniqueIdentifier>{269b4696-1105-45f5-b076-9d663e64284f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MAIN">
+      <UniqueIdentifier>{1c801a01-34b9-48b5-b880-d3cd4ccbd06f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UTILITIES">
+      <UniqueIdentifier>{cad27046-6740-4aa6-b1ee-aeedde545794}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game.cpp">
+      <Filter>GAMEENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>GAMEENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>GAMEENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>GAMEENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>GAMEENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>GAMEENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Deck.cpp">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>GAMESCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>GAMESCENES</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>MAIN</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>UTILITIES</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>GAMEENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>GAMEENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="DDown.cpp">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Hit.cpp">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Pass.cpp">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Split.cpp">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Stand.cpp">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>GAMEENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>GAMEENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>GAMEENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>GAMEENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>GAMEENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>GAMEENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Deck.h">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>GAMESCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>GAMESCENES</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>UTILITIES</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>UTILITIES</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>MAIN</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>UTILITIES</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>GAMEENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>GAMEENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="DDown.h">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Hit.h">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Pass.h">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Split.h">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClInclude>
+    <ClInclude Include="Stand.h">
+      <Filter>GAMEOBJECTS</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

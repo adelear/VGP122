@@ -1,0 +1,31 @@
+﻿  Input.cpp
+  Game.cpp
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Lesson Examples\W8_SDL\VGP122-PF1-LESSON8-EXAMPLES\EXAMPLE1\Game.cpp(85,26): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+  Image.cpp
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Lesson Examples\W8_SDL\VGP122-PF1-LESSON8-EXAMPLES\EXAMPLE1\Image.cpp(3,147): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Lesson Examples\W8_SDL\VGP122-PF1-LESSON8-EXAMPLES\EXAMPLE1\Image.cpp(3,144): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Main.cpp
+  Vector2D.cpp
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Lesson Examples\W8_SDL\VGP122-PF1-LESSON8-EXAMPLES\EXAMPLE1\Vector2D.cpp(202,11): warning C4244: 'initializing': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Lesson Examples\W8_SDL\VGP122-PF1-LESSON8-EXAMPLES\EXAMPLE1\Vector2D.cpp(203,11): warning C4244: 'initializing': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Lesson Examples\W8_SDL\VGP122-PF1-LESSON8-EXAMPLES\EXAMPLE1\Vector2D.cpp(210,11): warning C4244: 'initializing': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Lesson Examples\W8_SDL\VGP122-PF1-LESSON8-EXAMPLES\EXAMPLE1\Vector2D.cpp(211,11): warning C4244: 'initializing': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  Window.cpp
+  Generating Code...
+  EXAMPLE1.vcxproj -> C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\Lesson Examples\W8_SDL\VGP122-PF1-LESSON8-EXAMPLES\Debug\EXAMPLE1.exe

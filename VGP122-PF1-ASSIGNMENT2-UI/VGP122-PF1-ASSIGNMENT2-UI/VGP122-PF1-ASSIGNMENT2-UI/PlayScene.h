@@ -11,6 +11,7 @@
 #include "Card.h"
 #include "Deck.h"
 #include "Hand.h" 
+#include "Text.h"
 //#include "Hand.h"  //TODO ADD
 
 class PlayScene : public Scene
@@ -37,9 +38,9 @@ public:
 	void Pass(); 
 	int WinCondition(); 
 	void DealerTurn(); 
-	void CheckBust(); 
-	void CleanUp(); 
-	void reloadScene(); 
+	//void CheckBust(); 
+	//void CleanUp(); 
+	//void reloadScene(); 
 	void resetGame();  
 
 private:

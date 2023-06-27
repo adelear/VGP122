@@ -1,4 +1,7 @@
-﻿  PlayScene.cpp
-C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\PlayScene.cpp(30,41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\PlayScene.cpp(462): warning C4715: 'PlayScene::WinCondition': not all control paths return a value
+﻿  Main.cpp
+  PlayScene.cpp
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\PlayScene.cpp(31,41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Text.cpp
+  Generating Code...
+C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\PlayScene.cpp(471): warning C4715: 'PlayScene::WinCondition': not all control paths return a value
   VGP122-PF1-ASSIGNMENT2-UI.vcxproj -> C:\Users\OWNER\Desktop\VGD\Term 2\VGP122\VGP122\VGP122-PF1-ASSIGNMENT2-UI\VGP122-PF1-ASSIGNMENT2-UI\Debug\VGP122-PF1-ASSIGNMENT2-UI.exe

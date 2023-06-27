@@ -16,25 +16,25 @@ int Hand::getTotalValue() {
 		if (cards[i]->getFace() < 11) {
 			count += cards[i]->getFace();
 		}
-		else if(cards[i]->getFace() == 14) {
-			aces++; 
-			count += 11; 
+		else if (cards[i]->getFace() == 14) {
+			aces++;
+			count += 11;
 		}
 		else {
-			count += 10; 
+			count += 10;
 		}
 		//get face value of card and add them up
 		//if face value > 10, the value is still 10
 	}
-	//Count
-	while (count > 21) {
-		if (aces > 0) {
-			count -= 10; 
-			aces--;
-		}
+
+	// Check if the hand has aces and the count is greater than 21
+	while (count > 21 && aces > 0) {
+		count -= 10;
+		aces--;
 	}
-	return count; 
-}
+
+	return count;
+} 
 void Hand::getCardFromDeck(Deck* deck) {
 	cards.push_back(deck->drawCard());  
 	sort(); 

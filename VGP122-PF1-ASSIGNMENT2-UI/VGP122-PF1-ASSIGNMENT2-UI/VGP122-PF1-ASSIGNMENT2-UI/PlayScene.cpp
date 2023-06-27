@@ -24,6 +24,7 @@ restartPressed(false)
 	player->setPos(5, 5, 250, 250);
 	splitHand = new Hand();
 	splitHand->setPos(5, 250, 250, 250); 
+	//playerScoreText = Text(renderer,"open-sans/OpenSans-Bold.tff", x_position, y_position, font_size, angle, flip);   
 
 	splitCount = 0;
 
@@ -79,10 +80,13 @@ void PlayScene::update()
 		split->setActive(false); 
 	}
 
+	/*
 	if (player->getTotalValue() > 21)
 	{
 		gameEnded = true; 
+		return; 
 	}
+	*/ 
 
 	// If player's hand only has 2 cards, set visibility of dubble to true
 	if (player->getSizeOfHand() == 2 && splitCount==0 && ((player->getTotalValue()==9) || (player->getTotalValue()==10) || player->getTotalValue()==11))
@@ -305,8 +309,9 @@ void PlayScene::Hit()
 		if (player->getTotalValue() > 21) {
 			std::cout << "Player busts on the player hand!" << std::endl;
 			if (hasSplit && splitHand->getSizeOfHand() > 0) {
-				std::cout << "Switching to split hand..." << std::endl;
-				return; // Switch to split hand
+				std::cout << "Switching to player hand..." << std::endl;
+				hasSplit = false; // Move back to player hand
+				return;
 			}
 			else {
 				gameEnded = true;
@@ -317,13 +322,17 @@ void PlayScene::Hit()
 	else {
 		// Player's turn for the split hand
 		splitHand->getCardFromDeck(deck);
+		std::cout << "Split Hand Score: " << splitHand->getTotalValue() << std::endl;
 		if (splitHand->getTotalValue() > 21) {
-			std::cout << "Player busts on the split hand!" << std::endl;
-			gameEnded = true;
+			std::cout << "Split hand busts!" << std::endl;
+			std::cout << "Switching to player hand..." << std::endl;
+			hasSplit = false; // Move back to player hand
 			return;
 		}
 	}
-} 
+}
+
+
 void PlayScene::Split()
 {
 	if (player->hasSameFaceCards() && canSplit)
@@ -475,18 +484,6 @@ void PlayScene::DealerTurn()
 	}
 
 	std::cout << "Dealer's total value: " << dealer->getTotalValue() << std::endl;
-}
-
-
- 
-void PlayScene::CheckBust() {
-	if (player->getTotalValue() > 21) {
-		WinCondition(); 
-		return; 
-	}
-	else {
-		return;
-	}
 }
 
 
